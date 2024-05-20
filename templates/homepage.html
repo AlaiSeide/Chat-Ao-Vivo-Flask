@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js" integrity="sha512-luMnTJZ7oEchNDZAtQhgjomP1eZefnl82ruTH/3Oj/Yu5qYtwL7+dVRccACS/Snp1lFXq188XFipHKYE75IaQQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Hashzap</h1>
+
+
+    <div id="lista_mensagens">
+        <p>Liraa: Coe galera</p>
+        <p>Renan: Bora estudar</p>
+    </div>
+
+
+    <input type="text" id="usuario" placeholder="Usuario" required>
+
+    <input type="text" id="mensagem" placeholder="Mensagem" required>
+   
+
+    <button id="botao">Enviar</button>
+
+    <script type="text/javascript">
+    // Este é o início de um bloco de script em JavaScript. O atributo `type="text/javascript"` especifica que o conteúdo do script é em JavaScript.
+
+        // Ele vai executar essa funcao quando a pagina estiver carregada
+        // O método `$(document).ready` garante que a função passada como argumento será executada somente após a página HTML estar completamente carregada e pronta.
+        $(document).ready(function(){
+            var socket = io("localhost:5000");
+            socket.on("connect", function(){
+                console.log("Usuario conectou")
+            });
+
+
+
+
+
+            socket.on("message", function(data){
+
+            });
+            // No clique do botao vamos executar uma funcao
+            // O método `$("#botao").on("click", ...)` adiciona um ouvinte de eventos para o elemento com o ID `botao`. Quando este elemento for clicado, a função passada será executada.
+            $("#botao").on("click", function() {
+                // A função que é executada quando o botão é clicado simplesmente imprime a mensagem "Clicou no Botao" no console do navegador. `console.log` é usado para depuração e exibe mensagens no console.
+                console.log("Clicou no Botao");
+                // adicionar um novo paragrafo dentro da minha divisoria, o texto desse paragrafo vai ser Nova mensagem
+                $("#lista_mensagens").append($("<p>").text("Nova mensagem"));
+
+            })
+
+
+        })
+    </script>
+</body>
+</html>
